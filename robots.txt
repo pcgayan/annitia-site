@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://annitia-a.se/sitemap.xml

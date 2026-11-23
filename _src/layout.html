@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#291B35">
+<title>%%TITLE%%</title>
+<meta name="description" content="%%DESC%%">
+%%HEAD%%<meta property="og:title" content="%%TITLE%%">
+<meta property="og:description" content="%%OGDESC%%">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://annitia-a.se/assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/assets/fonts/cormorant-garamond-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/site.css">
+</head>
+<body class="%%BODYCLASS%%">
+<!-- %%NOTE%% -->
+<header class="site">
+  <a class="logo" href="/" aria-label="Annitia A., home"><img src="/assets/logo-a.webp" width="345" height="120" alt="Annitia A."></a>
+  <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+  <nav class="nav" id="nav">
+%%NAV%%
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" id="b-en" aria-pressed="true">EN</button>
+      <button type="button" id="b-sv" aria-pressed="false">SV</button>
+    </div>
+  </nav>
+</header>
+
+<main>
+%%MAIN%%
+</main>
+
+<footer class="foot">
+  <p><strong>Annitia A.</strong> <span data-en="is a brand of" data-sv="är ett varumärke som tillhör">is a brand of</span> <strong>Ktronics AB</strong></p>
+  <p>Org.nr 559469-3508 · VAT SE559469350801 · Katrineholm, Sweden</p>
+  <p><a href="tel:+46721819572">+46 72 181 95 72</a> · <a href="mailto:ktronicsdev@gmail.com">ktronicsdev@gmail.com</a></p>
+  <p data-en="No cookies, no tracking." data-sv="Inga kakor, ingen spårning.">No cookies, no tracking.</p>
+</footer>
+<div class="band">annitia-a.se · <span data-en="A Ktronics AB brand" data-sv="Ett varumärke från Ktronics AB">A Ktronics AB brand</span></div>
+
+<script src="/assets/site.js"></script>
+</body>
+</html>
