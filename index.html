@@ -34,8 +34,8 @@
     line-height: 1.65;
     -webkit-text-size-adjust: 100%;
   }
-  .wrap { max-width: 720px; margin: 0 auto; padding: 0 16px; }
-  header { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 16px; }
+  header { padding: 20px 0; display: flex; justify-content: flex-end; align-items: center; }
   .mark { font-size: .95rem; letter-spacing: .22em; text-transform: uppercase; color: var(--accent); }
   .lang button {
     font: inherit; font-size: .85rem; background: none; color: var(--muted);
@@ -43,7 +43,8 @@
   }
   .lang button[aria-pressed="true"] { color: var(--ink); border-color: var(--accent); }
   .hero { padding: 72px 0 56px; text-align: center; border-bottom: 1px solid var(--line); }
-  .hero h1 { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); }
+  .hero h1 { font-size: clamp(1.35rem, 6.2vw, 2.6rem); font-weight: 400; letter-spacing: .16em; text-transform: uppercase; text-align: center; margin: 18px 0 4px; line-height: 1.2; background: var(--gold); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  @media (min-width: 900px) { .hero { padding-top: 96px; } .sigcard { max-width: 520px !important; } section { padding: 64px 0; } }
   .sigcard { display:block; width:100%; max-width:440px; height:auto; margin:6px auto 4px; border-radius:16px; border:1px solid #b98a3e; box-shadow:0 0 0 4px rgba(224,176,96,.12), 0 18px 50px rgba(0,0,0,.45); }
   h2 { background: var(--gold); -webkit-background-clip:text; background-clip:text; color:transparent; }
   .hero .kicker { color: var(--accent); letter-spacing: .22em; text-transform: uppercase; font-size: .8rem; }
@@ -71,7 +72,7 @@
 <body>
 <div class="wrap">
   <header>
-    <div class="mark">Annitia Abeysuriya</div>
+    <div class="mark" aria-hidden="true"></div>
     <div class="lang" role="group" aria-label="Language">
       <button type="button" id="b-en" aria-pressed="true">EN</button>
       <button type="button" id="b-sv" aria-pressed="false">SV</button>
@@ -81,8 +82,8 @@
   <main>
     <div class="hero">
       <div class="kicker" data-en="Art you can hold" data-sv="Konst att hålla i">Art you can hold</div>
+            <img class="sigcard" src="assets/signature.png" width="416" height="228" alt="Annitia A. signature logo in gold script with a butterfly, on purple silk">
       <h1>Annitia Abeysuriya</h1>
-      <img class="sigcard" src="assets/signature.png" width="416" height="228" alt="Annitia A. signature logo in gold script with a butterfly, on purple silk">
       <p data-en="Hand-made art and ceramics, shaped, glazed and fired by the artist and signed one by one. The first collection is on its way."
          data-sv="Handgjord konst och keramik, formad, glaserad och bränd av konstnären och signerad ett och ett. Den första kollektionen är på väg.">Hand-made art and ceramics, shaped, glazed and fired by the artist and signed one by one. The first collection is on its way.</p>
     </div>
