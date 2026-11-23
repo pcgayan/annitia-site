@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Annitia Abeysuriya | Fine art and ceramics</title>
+<meta name="description" content="Fine art and ceramics by Annitia Abeysuriya. Shop opening soon. A brand of Ktronics AB, Katrineholm, Sweden.">
+<meta property="og:title" content="Annitia Abeysuriya | Fine art and ceramics">
+<meta property="og:description" content="Fine art and ceramics. Shop opening soon.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://annitiaabeysuriya.se/">
+<link rel="canonical" href="https://annitiaabeysuriya.se/">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<style>
+  :root {
+    --bg: #faf6f0;
+    --ink: #2b2420;
+    --muted: #6b5f56;
+    --accent: #8a5a3c;
+    --line: #e3d9cc;
+    --card: #fffdf9;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #1c1815;
+      --ink: #f1e9df;
+      --muted: #b3a798;
+      --accent: #d9a47c;
+      --line: #3a322c;
+      --card: #24201c;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.65;
+    -webkit-text-size-adjust: 100%;
+  }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 16px; }
+  header { padding: 20px 0; display: flex; justify-content: space-between; align-items: center; }
+  .mark { font-size: 1.05rem; letter-spacing: .18em; text-transform: uppercase; }
+  .lang button {
+    font: inherit; font-size: .85rem; background: none; color: var(--muted);
+    border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; cursor: pointer;
+  }
+  .lang button[aria-pressed="true"] { color: var(--ink); border-color: var(--accent); }
+  .hero { padding: 72px 0 56px; text-align: center; border-bottom: 1px solid var(--line); }
+  .hero h1 { font-size: clamp(2.2rem, 9vw, 3.6rem); font-weight: 400; margin: 0 0 8px; letter-spacing: .02em; }
+  .hero .kicker { color: var(--accent); letter-spacing: .22em; text-transform: uppercase; font-size: .8rem; }
+  .hero p { color: var(--muted); font-size: 1.15rem; margin: 18px auto 0; max-width: 34em; }
+  section { padding: 48px 0; border-bottom: 1px solid var(--line); }
+  h2 { font-size: 1.25rem; font-weight: 400; letter-spacing: .08em; text-transform: uppercase; margin: 0 0 14px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 20px; }
+  form { display: flex; flex-direction: column; gap: 10px; }
+  label { font-size: .95rem; }
+  input[type=email] {
+    font: inherit; padding: 12px; border-radius: 8px; border: 1px solid var(--line);
+    background: var(--bg); color: var(--ink); width: 100%;
+  }
+  .btn {
+    display: inline-block; font: inherit; text-align: center; text-decoration: none; cursor: pointer;
+    background: var(--accent); color: #fff; border: 0; border-radius: 8px; padding: 12px 18px;
+  }
+  .small { font-size: .82rem; color: var(--muted); }
+  a { color: var(--accent); }
+  footer { padding: 32px 0 48px; font-size: .85rem; color: var(--muted); }
+  footer p { margin: 4px 0; }
+  [hidden] { display: none !important; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="mark">Annitia Abeysuriya</div>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" id="b-en" aria-pressed="true">EN</button>
+      <button type="button" id="b-sv" aria-pressed="false">SV</button>
+    </div>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="kicker" data-en="Fine art and ceramics" data-sv="Bildkonst och keramik">Fine art and ceramics</div>
+      <h1>Annitia Abeysuriya</h1>
+      <p data-en="Hand-made pieces, made in Sweden. The shop is opening soon."
+         data-sv="Handgjorda verk, tillverkade i Sverige. Webbutiken öppnar snart.">Hand-made pieces, made in Sweden. The shop is opening soon.</p>
+    </div>
+
+    <section id="about">
+      <h2 data-en="About" data-sv="Om">About</h2>
+      <p data-en="Annitia Abeysuriya is a fine artist. Each piece is made by hand and signed with her name. Photographs and the first collection will appear here when the shop opens."
+         data-sv="Annitia Abeysuriya är konstnär. Varje verk är handgjort och signerat med hennes namn. Bilder och den första kollektionen visas här när webbutiken öppnar.">Annitia Abeysuriya is a fine artist. Each piece is made by hand and signed with her name. Photographs and the first collection will appear here when the shop opens.</p>
+    </section>
+
+    <section id="join">
+      <h2 data-en="Be the first to know" data-sv="Få veta först">Be the first to know</h2>
+      <div class="card">
+        <p data-en="Join the launch list and we will write to you once, when the shop opens."
+           data-sv="Gå med i listan så skriver vi till dig en gång, när webbutiken öppnar.">Join the launch list and we will write to you once, when the shop opens.</p>
+        <form id="join-form">
+          <label for="email" data-en="Your email" data-sv="Din e-postadress">Your email</label>
+          <input id="email" type="email" required autocomplete="email" inputmode="email" placeholder="name@example.com">
+          <button class="btn" type="submit" data-en="Join the launch list" data-sv="Gå med i listan">Join the launch list</button>
+        </form>
+        <p class="small" data-en="This opens an email to us; nothing is sent until you press send in your email app. We use your address only to tell you the shop is open. Ktronics AB is responsible for it. You can ask us to delete it at any time."
+           data-sv="Detta öppnar ett e-postmeddelande till oss; inget skickas förrän du trycker på skicka i din e-postapp. Vi använder din adress bara för att berätta att webbutiken är öppen. Ktronics AB är ansvarig för den. Du kan när som helst be oss radera den.">This opens an email to us; nothing is sent until you press send in your email app. We use your address only to tell you the shop is open. Ktronics AB is responsible for it. You can ask us to delete it at any time.</p>
+      </div>
+    </section>
+
+    <section id="follow" hidden>
+      <h2 data-en="Follow" data-sv="Följ">Follow</h2>
+      <p><a id="fb" href="#" rel="noopener">Facebook</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p><strong>Annitia Abeysuriya</strong> <span data-en="is a brand of" data-sv="är ett varumärke som tillhör">is a brand of</span> <strong>Ktronics AB</strong></p>
+    <p>Org.nr 559469-3508 · VAT SE559469350801 · Katrineholm, Sweden</p>
+    <p><a href="tel:+46721819572">+46 72 181 95 72</a> · <a href="mailto:ktronicsdev@gmail.com">ktronicsdev@gmail.com</a></p>
+    <p data-en="No cookies, no tracking." data-sv="Inga kakor, ingen spårning.">No cookies, no tracking.</p>
+  </footer>
+</div>
+
+<script>
+(function () {
+  var cur = "en";
+  function setLang(l) {
+    cur = l;
+    document.documentElement.lang = l;
+    document.querySelectorAll("[data-" + l + "]").forEach(function (el) {
+      el.textContent = el.getAttribute("data-" + l);
+    });
+    document.getElementById("b-en").setAttribute("aria-pressed", l === "en");
+    document.getElementById("b-sv").setAttribute("aria-pressed", l === "sv");
+  }
+  document.getElementById("b-en").addEventListener("click", function () { setLang("en"); });
+  document.getElementById("b-sv").addEventListener("click", function () { setLang("sv"); });
+  if ((navigator.language || "").toLowerCase().indexOf("sv") === 0) setLang("sv");
+
+  document.getElementById("join-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var m = document.getElementById("email").value.trim();
+    if (!m) return;
+    var subj = encodeURIComponent("Launch list: Annitia Abeysuriya");
+    var body = encodeURIComponent("Please add this address to the launch list: " + m);
+    window.location.href = "mailto:ktronicsdev@gmail.com?subject=" + subj + "&body=" + body;
+  });
+})();
+</script>
+</body>
+</html>
