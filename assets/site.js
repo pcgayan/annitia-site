@@ -1,4 +1,4 @@
-/* Annitia A.: language toggle (remembered across pages), phone menu, launch-list mailto. */
+/* Annitia A.: language toggle (Swedish by default, English remembered across pages), phone menu, launch-list mailto. */
 (function () {
   var KEY = "annitia-lang";
 
@@ -16,8 +16,8 @@
 
   var saved = null;
   try { saved = localStorage.getItem(KEY); } catch (e) { saved = null; }
-  if (saved === "en" || saved === "sv") { if (saved === "sv") setLang("sv", false); }
-  else if ((navigator.language || "").toLowerCase().indexOf("sv") === 0) setLang("sv", false);
+  // The pages are served in Swedish; only a saved choice of English switches them.
+  if (saved === "en") setLang("en", false);
 
   var btn = document.querySelector(".menu-btn"), nav = document.getElementById("nav");
   btn.addEventListener("click", function () {

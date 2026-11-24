@@ -18,8 +18,9 @@
   --ital: "Libre Baskerville", Georgia, serif;
   /* every page fits one screen: sizes below scale with the screen height (svh) as well as its width */
   --pad-y: clamp(6px, 1.6svh, 14px);
-  --logo-w: clamp(120px, min(17vw, 28svh), 250px);
-  --head-h: calc(var(--logo-w) * .348 + 2 * var(--pad-y));
+  --logo-w: clamp(170px, min(22vw, 38svh), 330px); /* header: the artist's name, image aspect 4.1 */
+  --head-h: calc(var(--logo-w) * .244 + 2 * var(--pad-y));
+  --name-h: clamp(90px, calc(100svh - 510px), 440px); /* home: the brand signature, image aspect 2.195 */
 }
 * { box-sizing: border-box; }
 html { background: #14001a; }
@@ -56,7 +57,7 @@ a { color: var(--gold); }
 /* home hero: fills the screen between the header and the footer, with no scrolling;
    the name's width follows the screen height so everything under it still fits */
 .hero { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: var(--head-h) 16px clamp(8px, 2svh, 24px); text-align: center; line-height: 1.35; }
-.hero h1 { margin: 0; width: clamp(min(100%, 280px), calc((100svh - 520px) * 4.1), min(100%, 1240px)); line-height: 0; }
+.hero h1 { margin: 0; width: min(100%, calc(var(--name-h) * 2.195)); line-height: 0; }
 .hero h1 img { width: 100%; height: auto; }
 .hero .under { display: flex; flex-direction: column; align-items: center; width: min(100%, 900px); }
 .caps { margin: 2px 0 0; font-family: var(--caps); font-weight: 500; font-size: clamp(.9rem, min(2.3vw, 3.4svh), 1.75rem); letter-spacing: .32em; text-transform: uppercase; color: var(--ivory); padding-left: .32em; }

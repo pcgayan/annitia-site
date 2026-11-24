@@ -7,6 +7,7 @@ them as they are. _src/ itself is not published (Jekyll skips folders starting w
 Check that the committed pages match the sources:   py _src/build.py --check
 """
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -14,35 +15,51 @@ ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / "_src"
 SITE = "https://annitia-a.se"
 
-# path on the site, source page, output file, title, description, nav label (en, sv) or None
+# path on the site, source page, output file, title, description, nav label (en, sv) or None,
+# then the Swedish title and description. The pages are served in Swedish; data-en keeps the English.
 PAGES = [
     ("/", "home.html", "index.html",
      "Annitia A. | Annitia Abeysuriya, artist",
      "Annitia A. is the art brand of Annitia Abeysuriya: art, creativity, expression. Original art, "
      "calligraphy and hand-made pieces, each one signed. The first collection is on its way. "
      "A brand of Ktronics AB, Sweden.",
-     ("Home", "Hem")),
+     ("Home", "Hem"),
+     "Annitia A. | Annitia Abeysuriya, konstnär",
+     "Annitia A. är konstvarumärket för Annitia Abeysuriya: konst, kreativitet, uttryck. Originalkonst, "
+     "kalligrafi och handgjorda verk, alla signerade. Den första kollektionen är på väg. "
+     "Ett varumärke från Ktronics AB, Sverige."),
     ("/artworks/", "artworks.html", "artworks/index.html",
      "Artworks | Annitia A.",
      "Original art, calligraphy and hand-made pieces by Annitia Abeysuriya, each one signed "
      "Annitia A. The first collection is on its way.",
-     ("Artworks", "Verk")),
+     ("Artworks", "Verk"),
+     "Verk | Annitia A.",
+     "Originalkonst, kalligrafi och handgjorda verk av Annitia Abeysuriya, alla signerade Annitia A. "
+     "Den första kollektionen är på väg."),
     ("/about/", "about.html", "about/index.html",
      "About | Annitia A.",
      "Annitia Abeysuriya is a fine artist. Her work begins by hand and ends with her signature, "
      "Annitia A.",
-     ("About", "Om")),
+     ("About", "Om"),
+     "Om | Annitia A.",
+     "Annitia Abeysuriya är konstnär. Hennes arbete börjar för hand och slutar med hennes signatur, "
+     "Annitia A."),
     ("/contact/", "contact.html", "contact/index.html",
      "Contact | Annitia A.",
      "Join the launch list for the first Annitia A. collection, or write to Ktronics AB in "
      "Katrineholm, Sweden.",
-     ("Contact", "Kontakt")),
+     ("Contact", "Kontakt"),
+     "Kontakt | Annitia A.",
+     "Gå med i listan inför den första Annitia A.-kollektionen, eller skriv till Ktronics AB i Katrineholm."),
     (None, "404.html", "404.html",
      "Page not found | Annitia A.",
      "This page is not on annitia-a.se.",
-     None),
+     None,
+     "Sidan finns inte | Annitia A.",
+     "Den här sidan finns inte på annitia-a.se."),
 ]
 
+HOME_OG_SV = "Konst · Kreativitet · Uttryck. En värld där fantasi, skönhet och konstnärligt uttryck möts."
 HOME_OG = "Art · Creativity · Expression. A world where imagination, beauty and artistic expression come together."
 
 # Who is who, for search engines and AI answers. Keep every claim here also visible on the pages
@@ -114,7 +131,7 @@ ORN = ('<div class="orn" aria-hidden="true"><svg viewBox="0 0 46 32"><g fill="#E
 
 def nav(current):
     rows = []
-    for path, _src, _out, _t, _d, label in PAGES:
+    for path, _src, _out, _t, _d, label, _ts, _ds in PAGES:
         if label is None:
             continue
         cur = ' aria-current="page"' if path == current else ""
@@ -123,7 +140,7 @@ def nav(current):
 
 
 def render(page, layout):
-    path, src, out, title, desc, _label = page
+    path, src, out, title_en, desc_en, _label, title, desc = page
     main = (SRC / "pages" / src).read_text(encoding="utf-8").rstrip("\n").replace("%%ORN%%", ORN)
     if path is None:  # 404: served at any URL, never indexed
         head = '<meta name="robots" content="noindex">\n'
@@ -131,19 +148,39 @@ def render(page, layout):
         head = (f'<meta property="og:url" content="{SITE}{path}">\n'
                 f'<link rel="canonical" href="{SITE}{path}">\n')
     if path == "/":
-        head += '<link rel="preload" href="/assets/name.webp" as="image" type="image/webp">\n'
+        head += '<link rel="preload" href="/assets/annitia-a.webp" as="image" type="image/webp">\n'
     if path in LDJSON:
         ld = json.dumps(LDJSON[path], ensure_ascii=False, indent=1).replace("</", "<\\/")
         head += f'<script type="application/ld+json">\n{ld}\n</script>\n'
     html = layout
-    for key, val in (("%%TITLE%%", title), ("%%DESC%%", desc), ("%%HEAD%%", head),
-                     ("%%OGDESC%%", HOME_OG if path == "/" else desc),
+    for key, val in (("%%TITLE_EN%%", title_en), ("%%TITLE%%", title), ("%%DESC%%", desc), ("%%HEAD%%", head),
+                     ("%%OGDESC%%", HOME_OG_SV if path == "/" else desc),
                      ("%%BODYCLASS%%", "home" if path == "/" else "page"),
                      ("%%NOTE%%", f"Generated by _src/build.py from _src/pages/{src}; edit that file and rebuild"),
                      ("%%NAV%%", nav(path)), ("%%MAIN%%", main)):
         html = html.replace(key, val)
     assert "%%" not in html, f"unfilled placeholder in {out}"
-    return out, html
+    return out, to_swedish(html)
+
+
+# An element with data-en and data-sv: opening tag (attributes may span lines), inner HTML, closing tag.
+_TR = re.compile(r'<(?P<tag>[a-zA-Z][a-zA-Z0-9]*)(?=(?:[^>"]|"[^"]*")*?\sdata-en=")(?P<attrs>(?:[^>"]|"[^"]*")*)>(?P<inner>.*?)</(?P=tag)>', re.S)
+_SV = re.compile(r'data-sv="([^"]*)"')
+
+
+def to_swedish(html):
+    """Serve Swedish: replace the inner HTML of every [data-en][data-sv] element with its data-sv
+    value (already entity-escaped like the inner text). site.js switches back to English."""
+    def fix(m):
+        a = m.group("attrs")
+        sv = _SV.search(a)
+        if not sv:
+            return m.group(0)
+        return f'<{m.group("tag")}{a}>{sv.group(1)}</{m.group("tag")}>'
+    html = _TR.sub(fix, html)
+    html = html.replace('id="b-en" aria-pressed="true"', 'id="b-en" aria-pressed="false"')
+    html = html.replace('id="b-sv" aria-pressed="false"', 'id="b-sv" aria-pressed="true"')
+    return html
 
 
 def outputs():
