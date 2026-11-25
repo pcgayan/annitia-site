@@ -5,7 +5,7 @@
   function setLang(l, remember) {
     document.documentElement.lang = l;
     document.querySelectorAll("[data-" + l + "]").forEach(function (el) {
-      el.textContent = el.getAttribute("data-" + l);
+      el.innerHTML = el.getAttribute("data-" + l);
     });
     document.getElementById("b-en").setAttribute("aria-pressed", l === "en");
     document.getElementById("b-sv").setAttribute("aria-pressed", l === "sv");

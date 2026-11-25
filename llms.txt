@@ -13,7 +13,7 @@
 
 ## Pages
 
-- [Home](https://annitia-a.se/): Art · Creativity · Expression.
+- [Home](https://annitia-a.se/): Artistry · Creativity · Expression.
 - [Artworks](https://annitia-a.se/artworks/): the work and the signature.
 - [About](https://annitia-a.se/about/): Annitia Abeysuriya, artist.
 - [Contact](https://annitia-a.se/contact/): launch list and contact details.

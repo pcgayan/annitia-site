@@ -20,12 +20,12 @@ SITE = "https://annitia-a.se"
 PAGES = [
     ("/", "home.html", "index.html",
      "Annitia A. | Annitia Abeysuriya, artist",
-     "Annitia A. is the art brand of Annitia Abeysuriya: art, creativity, expression. Original art, "
+     "Annitia A. is the art brand of Annitia Abeysuriya: artistry, creativity, expression. Original art, "
      "calligraphy and hand-made pieces, each one signed. The first collection is on its way. "
      "A brand of Ktronics AB, Sweden.",
      ("Home", "Hem"),
      "Annitia A. | Annitia Abeysuriya, konstnär",
-     "Annitia A. är konstvarumärket för Annitia Abeysuriya: konst, kreativitet, uttryck. Originalkonst, "
+     "Annitia A. är konstvarumärket för Annitia Abeysuriya: konstnärskap, kreativitet, uttryck. Originalkonst, "
      "kalligrafi och handgjorda verk, alla signerade. Den första kollektionen är på väg. "
      "Ett varumärke från Ktronics AB, Sverige."),
     ("/artworks/", "artworks.html", "artworks/index.html",
@@ -59,8 +59,8 @@ PAGES = [
      "Den här sidan finns inte på annitia-a.se."),
 ]
 
-HOME_OG_SV = "Konst · Kreativitet · Uttryck. En värld där fantasi, skönhet och konstnärligt uttryck möts."
-HOME_OG = "Art · Creativity · Expression. A world where imagination, beauty and artistic expression come together."
+HOME_OG_SV = "Konstnärskap · Kreativitet · Uttryck. En värld där fantasi, skönhet och konstnärskap möts."
+HOME_OG = "Artistry · Creativity · Expression. A world where imagination, beauty and artistry come together."
 
 # Who is who, for search engines and AI answers. Keep every claim here also visible on the pages
 # (Google ignores structured data the page does not show). Ktronics AB owns the brand; the artist
@@ -74,7 +74,7 @@ ARTIST = {"@type": "Person", "@id": f"{SITE}/#artist", "name": "Annitia Abeysuri
           "url": f"{SITE}/about/"}
 BRAND = {"@type": "Brand", "@id": f"{SITE}/#brand", "name": "Annitia A.",
          "alternateName": ["Annitia-A", "Annitia Abeysuriya"], "url": f"{SITE}/",
-         "logo": f"{SITE}/assets/logo-a.webp", "slogan": "Art · Creativity · Expression",
+         "logo": f"{SITE}/assets/logo-a.webp", "slogan": "Artistry · Creativity · Expression",
          "description": BRAND_DESC}
 OWNER = {"@type": "Organization", "@id": f"{SITE}/#ktronics", "name": "Ktronics AB", "legalName": "Ktronics AB",
          "url": "https://ktronics.se/", "vatID": "SE559469350801",
@@ -108,7 +108,7 @@ LLMS = f"""# Annitia A.
 
 ## Pages
 
-- [Home]({SITE}/): Art · Creativity · Expression.
+- [Home]({SITE}/): Artistry · Creativity · Expression.
 - [Artworks]({SITE}/artworks/): the work and the signature.
 - [About]({SITE}/about/): Annitia Abeysuriya, artist.
 - [Contact]({SITE}/contact/): launch list and contact details.

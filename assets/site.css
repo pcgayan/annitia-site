@@ -65,6 +65,9 @@ a { color: var(--gold); }
 .hero .under { display: flex; flex-direction: column; align-items: center; width: min(100%, 900px); }
 .caps { margin: 2px 0 0; font-family: var(--caps); font-weight: 500; font-size: clamp(.9rem, min(2.3vw, 3.4svh), 1.75rem); letter-spacing: .32em; text-transform: uppercase; color: var(--ivory); padding-left: .32em; }
 .caps .dot { color: var(--gold); padding: 0 .35em; }
+.hl { color: var(--gold-hi); font-weight: 700; }
+.caps .hl { border-bottom: 2px solid var(--gold); padding-bottom: 2px; }
+.lede .hl { font-style: normal; font-weight: 600; }
 .orn { display: flex; align-items: center; width: min(100%, 820px); margin: clamp(6px, 1.5svh, 14px) 0 clamp(4px, 1.2svh, 12px); }
 .orn::before, .orn::after { content: ""; flex: 1; height: 1.5px; background: linear-gradient(90deg, transparent, var(--gold) 30%, var(--gold)); }
 .orn::after { background: linear-gradient(90deg, var(--gold), var(--gold) 70%, transparent); }
@@ -122,3 +125,9 @@ input[type=email] { font: inherit; padding: 12px; border-radius: 8px; border: 1p
 .foot p { margin: 0; }
 .foot .nw { white-space: nowrap; }
 .band { padding: clamp(6px, 1.2svh, 10px) 16px; text-align: center; border-top: 1px solid #a8853f; background: rgba(41,27,53,.86); font-family: var(--caps); font-weight: 500; letter-spacing: .22em; text-transform: uppercase; font-size: .78rem; color: var(--gold); }
+
+/* "Konstnärskap" is long: keep the tagline inside a phone screen */
+@media (max-width: 480px) {
+  .caps { letter-spacing: .1em; padding-left: .1em; font-size: clamp(.7rem, 3.6vw, .9rem); white-space: nowrap; }
+  .caps .dot { padding: 0 .25em; }
+}
